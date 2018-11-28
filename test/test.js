@@ -11,10 +11,8 @@ config.user = 'dba';
 config.password = 'dba';
 config.schema = 'USER';
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 20000; i++) {
   nuodb.connect(config, function (err, connection) {
-    console.log('connected');
-    console.log("typename: " + connection.constructor.name);
     if (err) {
       console.error(err.message);
       return;

@@ -1,0 +1,1362 @@
+==119== Memcheck, a memory error detector
+==119== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==119== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==119== Command: /usr/local/bin/node test/test.js
+==119== Parent PID: 19
+==119== 
+--119-- 
+--119-- Valgrind options:
+--119--    -v
+--119--    --tool=memcheck
+--119--    --leak-check=full
+--119--    --show-reachable=yes
+--119--    --num-callers=40
+--119--    --log-file=/valgrind/valgrind.log
+--119-- Contents of /proc/version:
+--119--   Linux version 4.9.125-linuxkit (root@659b6d51c354) (gcc version 6.4.0 (Alpine 6.4.0) ) #1 SMP Fri Sep 7 08:20:28 UTC 2018
+--119-- 
+--119-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-sse3-avx-avx2-bmi
+--119-- Page sizes: currently 4096, max supported 4096
+--119-- Valgrind library directory: /usr/lib64/valgrind
+--119-- Reading syms from /usr/local/bin/node
+--119-- Reading syms from /usr/lib64/ld-2.17.so
+--119-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--119--    object doesn't have a symbol table
+--119--    object doesn't have a dynamic symbol table
+--119-- Scheduler: using generic scheduler lock implementation.
+--119-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==119== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-119-by-???-on-253cdc6d0d98
+==119== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-119-by-???-on-253cdc6d0d98
+==119== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-119-by-???-on-253cdc6d0d98
+==119== 
+==119== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==119== don't want to do, unless you know exactly what you're doing,
+==119== or are doing some strange experiment):
+==119==   /usr/lib64/valgrind/../../bin/vgdb --pid=119 ...command...
+==119== 
+==119== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==119==   /path/to/gdb /usr/local/bin/node
+==119== and then give GDB the following command
+==119==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=119
+==119== --pid is optional if only one valgrind process is running
+==119== 
+--119-- REDIR: 0x4019f70 (ld-linux-x86-64.so.2:strlen) redirected to 0x58059d91 (???)
+--119-- REDIR: 0x4019d40 (ld-linux-x86-64.so.2:index) redirected to 0x58059dab (???)
+--119-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--119-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+==119== WARNING: new redirection conflicts with existing -- ignoring it
+--119--     old: 0x04019f70 (strlen              ) R-> (0000.0) 0x58059d91 ???
+--119--     new: 0x04019f70 (strlen              ) R-> (2007.0) 0x04c2cad0 strlen
+--119-- REDIR: 0x4019ef0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2dc20 (strcmp)
+--119-- REDIR: 0x401aae0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c30ca0 (mempcpy)
+--119-- Reading syms from /usr/lib64/libdl-2.17.so
+--119-- Reading syms from /usr/lib64/librt-2.17.so
+--119-- Reading syms from /usr/lib64/libstdc++.so.6.0.19
+--119--    object doesn't have a symbol table
+--119-- Reading syms from /usr/lib64/libm-2.17.so
+--119-- Reading syms from /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+--119--    object doesn't have a symbol table
+--119-- Reading syms from /usr/lib64/libpthread-2.17.so
+--119-- Reading syms from /usr/lib64/libc-2.17.so
+--119-- REDIR: 0x5d0ce40 (libc.so.6:strcasecmp) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5d09bc0 (libc.so.6:strnlen) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5d0f110 (libc.so.6:strncasecmp) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5d0c620 (libc.so.6:memset) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5d0c5d0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5d09ae0 (libc.so.6:__GI_strlen) redirected to 0x4c2ca30 (__GI_strlen)
+--119-- REDIR: 0x5d0b5b0 (libc.so.6:__GI_strrchr) redirected to 0x4c2c490 (__GI_strrchr)
+--119-- REDIR: 0x5d09a90 (libc.so.6:strlen) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dc3670 (libc.so.6:__strlen_sse42) redirected to 0x4c2ca90 (__strlen_sse42)
+--119-- REDIR: 0x52a0eb0 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4c2a1bc (operator new(unsigned long))
+--119-- REDIR: 0x5d117e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dc9480 (libc.so.6:__memcpy_ssse3) redirected to 0x4c2dfe0 (memcpy@@GLIBC_2.14)
+--119-- REDIR: 0x5d03210 (libc.so.6:calloc) redirected to 0x4c2b91f (calloc)
+--119-- REDIR: 0xffffffffff600000 (???:???) redirected to 0x58059d73 (???)
+--119-- REDIR: 0x5d0c680 (libc.so.6:__GI_memset) redirected to 0x4c2fec0 (memset)
+--119-- REDIR: 0x5d02800 (libc.so.6:malloc) redirected to 0x4c29b9c (malloc)
+--119-- REDIR: 0x5dce820 (libc.so.6:__memmove_ssse3) redirected to 0x4c2dd80 (memcpy@GLIBC_2.2.5)
+--119-- REDIR: 0x5d02d00 (libc.so.6:realloc) redirected to 0x4c2baee (realloc)
+--119-- REDIR: 0x5d09ce0 (libc.so.6:__GI_strncmp) redirected to 0x4c2d260 (__GI_strncmp)
+--119-- REDIR: 0x52a0fc0 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c2a861 (operator new[](unsigned long))
+--119-- REDIR: 0x529f050 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c2b5f6 (operator delete[](void*))
+--119-- REDIR: 0x52a0ff0 (libstdc++.so.6:operator new[](unsigned long, std::nothrow_t const&)) redirected to 0x4c2aab4 (operator new[](unsigned long, std::nothrow_t const&))
+--119-- REDIR: 0x5d0c040 (libc.so.6:__GI_memcmp) redirected to 0x4c2f510 (__GI_memcmp)
+--119-- REDIR: 0x5d08040 (libc.so.6:strcmp) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dbb6f0 (libc.so.6:__strcmp_sse42) redirected to 0x4c2dbd0 (__strcmp_sse42)
+--119-- REDIR: 0x5d0c000 (libc.so.6:bcmp) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5de6910 (libc.so.6:__memcmp_sse4_1) redirected to 0x4c2f650 (__memcmp_sse4_1)
+--119-- REDIR: 0x529f020 (libstdc++.so.6:operator delete(void*)) redirected to 0x4c2b146 (operator delete(void*))
+--119-- REDIR: 0x5d02c20 (libc.so.6:free) redirected to 0x4c2ac96 (free)
+--119-- REDIR: 0x5d130d0 (libc.so.6:strchrnul) redirected to 0x4c307c0 (strchrnul)
+--119-- REDIR: 0x5d0b530 (libc.so.6:strncpy) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5ddf2b0 (libc.so.6:__strncpy_ssse3) redirected to 0x4c2ccb0 (strncpy)
+--119-- REDIR: 0xffffffffff600400 (???:???) redirected to 0x58059d7d (???)
+==119== Warning: set address range perms: large range [0x3368b1b5000, 0x336ab1b6000) (noaccess)
+--119-- memcheck GC: 1000 nodes, 280 survivors (28.0%)
+--119-- memcheck GC: 1014 new table size (driftup)
+--119-- memcheck GC: 1014 nodes, 311 survivors (30.7%)
+--119-- memcheck GC: 1029 new table size (driftup)
+--119-- REDIR: 0x5d0bcb0 (libc.so.6:memchr) redirected to 0x4c2dcc0 (memchr)
+--119-- REDIR: 0x5d094d0 (libc.so.6:strcpy) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dddb00 (libc.so.6:__strcpy_ssse3) redirected to 0x4c2caf0 (strcpy)
+--119-- memcheck GC: 1029 nodes, 294 survivors (28.6%)
+--119-- memcheck GC: 1044 new table size (driftup)
+--119-- memcheck GC: 1044 nodes, 330 survivors (31.6%)
+--119-- memcheck GC: 1059 new table size (driftup)
+--119-- memcheck GC: 1059 nodes, 336 survivors (31.7%)
+--119-- memcheck GC: 1074 new table size (driftup)
+--119-- memcheck GC: 1074 nodes, 271 survivors (25.2%)
+--119-- memcheck GC: 1090 new table size (driftup)
+--119-- REDIR: 0x5d09ca0 (libc.so.6:strncmp) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dbc4a0 (libc.so.6:__strncmp_sse42) redirected to 0x4c2d340 (__strncmp_sse42)
+--119-- memcheck GC: 1090 nodes, 296 survivors (27.2%)
+--119-- memcheck GC: 1106 new table size (driftup)
+--119-- memcheck GC: 1106 nodes, 257 survivors (23.2%)
+--119-- memcheck GC: 1122 new table size (driftup)
+--119-- memcheck GC: 1122 nodes, 256 survivors (22.8%)
+--119-- memcheck GC: 1138 new table size (driftup)
+--119-- memcheck GC: 1138 nodes, 262 survivors (23.0%)
+--119-- memcheck GC: 1155 new table size (driftup)
+--119-- memcheck GC: 1155 nodes, 252 survivors (21.8%)
+--119-- memcheck GC: 1172 new table size (driftup)
+--119-- memcheck GC: 1172 nodes, 249 survivors (21.2%)
+--119-- memcheck GC: 1189 new table size (driftup)
+--119-- memcheck GC: 1189 nodes, 245 survivors (20.6%)
+--119-- memcheck GC: 1206 new table size (driftup)
+--119-- memcheck GC: 1206 nodes, 272 survivors (22.6%)
+--119-- memcheck GC: 1224 new table size (driftup)
+--119-- memcheck GC: 1224 nodes, 240 survivors (19.6%)
+--119-- memcheck GC: 1242 new table size (driftup)
+--119-- memcheck GC: 1242 nodes, 323 survivors (26.0%)
+--119-- memcheck GC: 1260 new table size (driftup)
+--119-- memcheck GC: 1260 nodes, 267 survivors (21.2%)
+--119-- memcheck GC: 1278 new table size (driftup)
+--119-- REDIR: 0x5d11850 (libc.so.6:__GI_memcpy) redirected to 0x4c2e5c0 (__GI_memcpy)
+--119-- REDIR: 0x5d0c7f0 (libc.so.6:__GI_mempcpy) redirected to 0x4c309d0 (__GI_mempcpy)
+--119-- memcheck GC: 1278 nodes, 355 survivors (27.8%)
+--119-- memcheck GC: 1297 new table size (driftup)
+--119-- memcheck GC: 1297 nodes, 510 survivors (39.3%)
+--119-- memcheck GC: 1316 new table size (driftup)
+--119-- memcheck GC: 1316 nodes, 306 survivors (23.3%)
+--119-- memcheck GC: 1335 new table size (driftup)
+--119-- memcheck GC: 1335 nodes, 273 survivors (20.4%)
+--119-- memcheck GC: 1355 new table size (driftup)
+--119-- memcheck GC: 1355 nodes, 240 survivors (17.7%)
+--119-- memcheck GC: 1375 new table size (driftup)
+--119-- memcheck GC: 1375 nodes, 266 survivors (19.3%)
+--119-- memcheck GC: 1395 new table size (driftup)
+--119-- memcheck GC: 1395 nodes, 241 survivors (17.3%)
+--119-- memcheck GC: 1415 new table size (driftup)
+--119-- memcheck GC: 1415 nodes, 344 survivors (24.3%)
+--119-- memcheck GC: 1436 new table size (driftup)
+--119-- memcheck GC: 1436 nodes, 235 survivors (16.4%)
+--119-- memcheck GC: 1457 new table size (driftup)
+--119-- REDIR: 0x5d22630 (libc.so.6:__GI_strstr) redirected to 0x4c30f30 (__strstr_sse2)
+--119-- REDIR: 0x5d07f80 (libc.so.6:index) redirected to 0x4a247b0 (_vgnU_ifunc_wrapper)
+--119-- REDIR: 0x5dbb640 (libc.so.6:__strchr_sse42) redirected to 0x4c2c680 (index)
+--119-- memcheck GC: 1457 nodes, 241 survivors (16.5%)
+--119-- memcheck GC: 1478 new table size (driftup)
+--119-- memcheck GC: 1478 nodes, 224 survivors (15.2%)
+--119-- memcheck GC: 1500 new table size (driftup)
+--119-- memcheck GC: 1500 nodes, 231 survivors (15.4%)
+--119-- memcheck GC: 1522 new table size (driftup)
+--119-- Reading syms from /usr/src/nuodb/build/Debug/nuodb.node
+--119-- memcheck GC: 1522 nodes, 1129 survivors (74.2%)
+--119-- memcheck GC: 2152 new table size (stepup)
+--119-- memcheck GC: 2152 nodes, 2152 survivors (100.0%)
+--119-- memcheck GC: 3043 new table size (stepup)
+--119-- memcheck GC: 3043 nodes, 3043 survivors (100.0%)
+--119-- memcheck GC: 4303 new table size (stepup)
+--119-- memcheck GC: 4303 nodes, 4303 survivors (100.0%)
+--119-- memcheck GC: 6085 new table size (stepup)
+--119-- memcheck GC: 6085 nodes, 6085 survivors (100.0%)
+--119-- memcheck GC: 8605 new table size (stepup)
+--119-- memcheck GC: 8605 nodes, 8605 survivors (100.0%)
+--119-- memcheck GC: 12169 new table size (stepup)
+--119-- memcheck GC: 12169 nodes, 12169 survivors (100.0%)
+--119-- memcheck GC: 17209 new table size (stepup)
+--119-- memcheck GC: 17209 nodes, 17208 survivors (100.0%)
+--119-- memcheck GC: 24337 new table size (stepup)
+--119-- memcheck GC: 24337 nodes, 24337 survivors (100.0%)
+--119-- memcheck GC: 34417 new table size (stepup)
+--119-- memcheck GC: 34417 nodes, 34417 survivors (100.0%)
+--119-- memcheck GC: 48672 new table size (stepup)
+--119-- memcheck GC: 48672 nodes, 40170 survivors (82.5%)
+--119-- memcheck GC: 68832 new table size (stepup)
+==119== Warning: set address range perms: large range [0x3368b1b5000, 0x336ab1b5000) (noaccess)
+==119== 
+==119== HEAP SUMMARY:
+==119==     in use at exit: 717,705 bytes in 41,154 blocks
+==119==   total heap usage: 223,508 allocs, 182,354 frees, 81,461,854 bytes allocated
+==119== 
+==119== Searching for pointers to 41,154 not-freed blocks
+==119== Checked 557,576 bytes
+==119== 
+==119== 3 bytes in 1 blocks are possibly lost in loss record 1 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x5D09809: strdup (in /usr/lib64/libc-2.17.so)
+==119==    by 0x142DF4F: config_lookup.isra.2 (ares_init.c:1628)
+==119==    by 0x143003C: init_by_resolv_conf (ares_init.c:1318)
+==119==    by 0x143003C: ares_init_options.part.3 (ares_init.c:206)
+==119==    by 0x8AA0F0: node::cares_wrap::(anonymous namespace)::ChannelWrap::Setup() (in /usr/local/bin/node)
+==119==    by 0x8AB7F5: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119== 
+==119== 4 bytes in 1 blocks are still reachable in loss record 2 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x985C3EE: NuoJs::ConnectWorker::HandleOKCallback() (NuoJsDriver.cpp:86)
+==119==    by 0x985BAD3: Nan::AsyncWorker::WorkComplete() (nan.h:1845)
+==119==    by 0x985BD3A: Nan::AsyncExecuteComplete(uv_work_s*) (nan.h:2199)
+==119==    by 0x9B3594: uv__work_done (threadpool.c:251)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 8 bytes in 1 blocks are still reachable in loss record 3 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x107A54D: v8::tracing::TracingCategoryObserver::SetUp() (in /usr/local/bin/node)
+==119==    by 0x8D489C: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 8 bytes in 1 blocks are still reachable in loss record 4 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8D48A6: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 11 bytes in 1 blocks are still reachable in loss record 5 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x14B805D: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1307D28: icu_60::TimeZone::getTZDataVersion(UErrorCode&) (in /usr/local/bin/node)
+==119==    by 0x94278B: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 17 bytes in 1 blocks are still reachable in loss record 6 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x14B805D: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1302031: ulocdata_getCLDRVersion_60 (in /usr/local/bin/node)
+==119==    by 0x9426D9: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 24 bytes in 1 blocks are still reachable in loss record 7 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x105F47A: v8::internal::(anonymous namespace)::InitializeIntrinsicFunctionNames() (in /usr/local/bin/node)
+==119==    by 0x145A3C6: v8::base::CallOnceImpl(long*, void (*)(void*), void*) (in /usr/local/bin/node)
+==119==    by 0x105F891: v8::internal::Runtime::FunctionForName(unsigned char const*, int) (in /usr/local/bin/node)
+==119==    by 0xF69277: v8::internal::ParserBase<v8::internal::Parser>::ParseV8Intrinsic(bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D3DC: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D491: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A053: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6CF38: v8::internal::ParserBase<v8::internal::Parser>::ParseBlock(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ADC7: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF79E63: v8::internal::ParserBase<v8::internal::Parser>::ParseScopedStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A12A: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6B107: v8::internal::ParserBase<v8::internal::Parser>::ParseStatementList(v8::internal::ZoneList<v8::internal::Statement*>*, int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6C126: v8::internal::ParserBase<v8::internal::Parser>::ParseFunctionBody(v8::internal::ZoneList<v8::internal::Statement*>*, v8::internal::AstRawString const*, int, v8::internal::ParserFormalParameters const&, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6E779: v8::internal::Parser::ParseFunction(v8::internal::AstRawString const*, int, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, v8::internal::DeclarationScope*, int*, int*, bool*, int*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6F11D: v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::LanguageMode, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72107: v8::internal::Parser::DoParseFunction(v8::internal::ParseInfo*, v8::internal::AstRawString const*) (in /usr/local/bin/node)
+==119==    by 0xF72779: v8::internal::Parser::ParseFunction(v8::internal::Isolate*, v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>) (in /usr/local/bin/node)
+==119==    by 0xF7FF25: v8::internal::parsing::ParseFunction(v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0xD2C9FC: v8::internal::Compiler::Compile(v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Compiler::ClearExceptionFlag) (in /usr/local/bin/node)
+==119== 
+==119== 24 bytes in 1 blocks are still reachable in loss record 8 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x985E21C: NuoJs::Connection::newInstance(Nan::FunctionCallbackInfo<v8::Value> const&) (NuoJsConnection.cpp:49)
+==119==    by 0x985A1DA: Nan::imp::FunctionCallbackWrapper(v8::FunctionCallbackInfo<v8::Value> const&) (nan_callbacks_12_inl.h:176)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C5E6: v8::internal::Builtins::InvokeApiFunction(v8::internal::Isolate*, bool, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*, v8::internal::Handle<v8::internal::HeapObject>) (in /usr/local/bin/node)
+==119==    by 0xDA4F15: v8::internal::Execution::New(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA76F39: v8::Function::NewInstance(v8::Local<v8::Context>, int, v8::Local<v8::Value>*) const (in /usr/local/bin/node)
+==119==    by 0x985E571: v8::Function::NewInstance(v8::Local<v8::Context>) const (v8.h:3904)
+==119==    by 0x985E5E8: Nan::NewInstance(v8::Local<v8::Function>) (nan_maybe_43_inl.h:56)
+==119==    by 0x985E311: NuoJs::Connection::createFrom(unsigned long) (NuoJsConnection.cpp:66)
+==119==    by 0x985C40F: NuoJs::ConnectWorker::HandleOKCallback() (NuoJsDriver.cpp:89)
+==119==    by 0x985BAD3: Nan::AsyncWorker::WorkComplete() (nan.h:1845)
+==119==    by 0x985BD3A: Nan::AsyncExecuteComplete(uv_work_s*) (nan.h:2199)
+==119==    by 0x9B3594: uv__work_done (threadpool.c:251)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 24 bytes in 1 blocks are definitely lost in loss record 9 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x985AD0C: NuoJs::Driver::newInstance(Nan::FunctionCallbackInfo<v8::Value> const&) (NuoJsDriver.cpp:49)
+==119==    by 0x985A1DA: Nan::imp::FunctionCallbackWrapper(v8::FunctionCallbackInfo<v8::Value> const&) (nan_callbacks_12_inl.h:176)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 32 bytes in 1 blocks are still reachable in loss record 10 of 44
+==119==    at 0x4C2B9B5: calloc (vg_replace_malloc.c:711)
+==119==    by 0x4E3761F: _dlerror_run (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x4E37050: dlopen@@GLIBC_2.2.5 (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x9B7E06: uv_dlopen (dl.c:36)
+==119==    by 0x8CD6E4: node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119== 
+==119== 38 bytes in 1 blocks are still reachable in loss record 11 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x4007B8C: expand_dynamic_string_token (in /usr/lib64/ld-2.17.so)
+==119==    by 0x400871E: _dl_map_object (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40143E3: dl_open_worker (in /usr/lib64/ld-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4013CCA: _dl_open (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E36FBA: dlopen_doit (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E375BC: _dlerror_run (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x4E37050: dlopen@@GLIBC_2.2.5 (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x9B7E06: uv_dlopen (dl.c:36)
+==119==    by 0x8CD6E4: node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119== 
+==119== 38 bytes in 1 blocks are still reachable in loss record 12 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x400B603: _dl_new_object (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40062F3: _dl_map_object_from_fd (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40087B7: _dl_map_object (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40143E3: dl_open_worker (in /usr/lib64/ld-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4013CCA: _dl_open (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E36FBA: dlopen_doit (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E375BC: _dlerror_run (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x4E37050: dlopen@@GLIBC_2.2.5 (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x9B7E06: uv_dlopen (dl.c:36)
+==119==    by 0x8CD6E4: node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119== 
+==119== 40 bytes in 1 blocks are definitely lost in loss record 13 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8BAC5C: node::Environment::Start(int, char const* const*, int, char const* const*, bool) (in /usr/local/bin/node)
+==119==    by 0x8D52F0: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 40 bytes in 1 blocks are definitely lost in loss record 14 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8BACA2: node::Environment::Start(int, char const* const*, int, char const* const*, bool) (in /usr/local/bin/node)
+==119==    by 0x8D52F0: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 40 bytes in 1 blocks are definitely lost in loss record 15 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8BACE5: node::Environment::Start(int, char const* const*, int, char const* const*, bool) (in /usr/local/bin/node)
+==119==    by 0x8D52F0: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 40 bytes in 1 blocks are definitely lost in loss record 16 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8BAD24: node::Environment::Start(int, char const* const*, int, char const* const*, bool) (in /usr/local/bin/node)
+==119==    by 0x8D52F0: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 56 bytes in 1 blocks are still reachable in loss record 17 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x148186B: UDataMemory_createNewInstance_60 (in /usr/local/bin/node)
+==119==    by 0x14D1512: udata_setCommonData_60 (in /usr/local/bin/node)
+==119==    by 0x944F05: node::i18n::InitializeICUDirectory(std::string const&) (in /usr/local/bin/node)
+==119==    by 0x8D427B: node::Init(int*, char const**, int*, char const***) (in /usr/local/bin/node)
+==119==    by 0x8D47F9: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 56 bytes in 1 blocks are still reachable in loss record 18 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x148186B: UDataMemory_createNewInstance_60 (in /usr/local/bin/node)
+==119==    by 0x14D05D4: doLoadFromCommonData(signed char, char const*, char const*, char const*, char const*, char const*, char const*, char const*, signed char (*)(void*, char const*, char const*, UDataInfo const*), void*, UErrorCode*, UErrorCode*) [clone .isra.7] (in /usr/local/bin/node)
+==119==    by 0x14D1406: doOpenChoice(char const*, char const*, char const*, signed char (*)(void*, char const*, char const*, UDataInfo const*), void*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14E7C81: res_load_60 (in /usr/local/bin/node)
+==119==    by 0x14B7F60: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1302031: ulocdata_getCLDRVersion_60 (in /usr/local/bin/node)
+==119==    by 0x9426D9: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 56 bytes in 1 blocks are still reachable in loss record 19 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x148186B: UDataMemory_createNewInstance_60 (in /usr/local/bin/node)
+==119==    by 0x14D05D4: doLoadFromCommonData(signed char, char const*, char const*, char const*, char const*, char const*, char const*, char const*, signed char (*)(void*, char const*, char const*, UDataInfo const*), void*, UErrorCode*, UErrorCode*) [clone .isra.7] (in /usr/local/bin/node)
+==119==    by 0x14D1406: doOpenChoice(char const*, char const*, char const*, signed char (*)(void*, char const*, char const*, UDataInfo const*), void*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14E7C81: res_load_60 (in /usr/local/bin/node)
+==119==    by 0x14B7F60: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1307D28: icu_60::TimeZone::getTZDataVersion(UErrorCode&) (in /usr/local/bin/node)
+==119==    by 0x94278B: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 56 bytes in 1 blocks are possibly lost in loss record 20 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0xDE2B43: v8::internal::MemoryReducer::NotifyMarkCompact(v8::internal::MemoryReducer::Event const&) (in /usr/local/bin/node)
+==119==    by 0xE0B07F: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [clone .constprop.934] (in /usr/local/bin/node)
+==119==    by 0xE0BD15: v8::internal::Heap::FinalizeIncrementalMarkingIfComplete(v8::internal::GarbageCollectionReason) (in /usr/local/bin/node)
+==119==    by 0xE0D71C: v8::internal::IncrementalMarkingJob::Task::RunInternal() (in /usr/local/bin/node)
+==119==    by 0xB3F705: v8::internal::CancelableTask::Run() (in /usr/local/bin/node)
+==119==    by 0x921CAA: node::PerIsolatePlatformData::FlushForegroundTasksInternal() (in /usr/local/bin/node)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 64 bytes in 1 blocks are still reachable in loss record 21 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x1491814: TimeZoneDataDirInitFn(UErrorCode&) (in /usr/local/bin/node)
+==119==    by 0x1492403: u_getTimeZoneFilesDirectory_60 (in /usr/local/bin/node)
+==119==    by 0x14D1137: doOpenChoice(char const*, char const*, char const*, signed char (*)(void*, char const*, char const*, UDataInfo const*), void*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14E7C81: res_load_60 (in /usr/local/bin/node)
+==119==    by 0x14B7F60: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1307D28: icu_60::TimeZone::getTZDataVersion(UErrorCode&) (in /usr/local/bin/node)
+==119==    by 0x94278B: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 80 bytes in 1 blocks are still reachable in loss record 22 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x14729C0: uhash_open_60 (in /usr/local/bin/node)
+==119==    by 0x14B98A5: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1302031: ulocdata_getCLDRVersion_60 (in /usr/local/bin/node)
+==119==    by 0x9426D9: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 88 bytes in 1 blocks are possibly lost in loss record 23 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8AB737: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119== 
+==119== 120 bytes in 1 blocks are still reachable in loss record 24 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x14B7E88: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1302031: ulocdata_getCLDRVersion_60 (in /usr/local/bin/node)
+==119==    by 0x9426D9: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 120 bytes in 1 blocks are still reachable in loss record 25 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x14B7E88: init_entry(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14B98EF: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1307D28: icu_60::TimeZone::getTZDataVersion(UErrorCode&) (in /usr/local/bin/node)
+==119==    by 0x94278B: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 120 bytes in 1 blocks are still reachable in loss record 26 of 44
+==119==    at 0x4C2B9B5: calloc (vg_replace_malloc.c:711)
+==119==    by 0x40112AD: _dl_check_map_versions (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4014720: dl_open_worker (in /usr/lib64/ld-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4013CCA: _dl_open (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E36FBA: dlopen_doit (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E375BC: _dlerror_run (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x4E37050: dlopen@@GLIBC_2.2.5 (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x9B7E06: uv_dlopen (dl.c:36)
+==119==    by 0x8CD6E4: node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119== 
+==119== 120 bytes in 1 blocks are possibly lost in loss record 27 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8AB68F: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119== 
+==119== 128 bytes in 1 blocks are still reachable in loss record 28 of 44
+==119==    at 0x4C29B6D: malloc (vg_replace_malloc.c:298)
+==119==    by 0x4C2BB39: realloc (vg_replace_malloc.c:785)
+==119==    by 0x9B70F7: maybe_resize (core.c:816)
+==119==    by 0x9B70F7: uv__io_start (core.c:855)
+==119==    by 0x9C00F1: uv__signal_loop_once_init (signal.c:264)
+==119==    by 0x9C00F1: uv_signal_init (signal.c:311)
+==119==    by 0x9BC58B: uv_loop_init (loop.c:71)
+==119==    by 0x9B53E9: uv_default_loop (uv-common.c:599)
+==119==    by 0x8D4045: node::Init(int*, char const**, int*, char const***) (in /usr/local/bin/node)
+==119==    by 0x8D47F9: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 128 bytes in 1 blocks are still reachable in loss record 29 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x922B5C: node::NodePlatform::RegisterIsolate(node::IsolateData*, uv_loop_s*) (in /usr/local/bin/node)
+==119==    by 0x8B5711: node::IsolateData::IsolateData(v8::Isolate*, uv_loop_s*, node::MultiIsolatePlatform*, unsigned int*) (in /usr/local/bin/node)
+==119==    by 0x8D5269: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 128 bytes in 1 blocks are possibly lost in loss record 30 of 44
+==119==    at 0x4C29B6D: malloc (vg_replace_malloc.c:298)
+==119==    by 0x4C2BB39: realloc (vg_replace_malloc.c:785)
+==119==    by 0x142EF28: config_nameserver (ares_init.c:1674)
+==119==    by 0x142EF28: init_by_resolv_conf (ares_init.c:1282)
+==119==    by 0x142EF28: ares_init_options.part.3 (ares_init.c:206)
+==119==    by 0x8AA0F0: node::cares_wrap::(anonymous namespace)::ChannelWrap::Setup() (in /usr/local/bin/node)
+==119==    by 0x8AB7F5: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119== 
+==119== 152 bytes in 1 blocks are possibly lost in loss record 31 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x8AA11D: node::cares_wrap::(anonymous namespace)::ChannelWrap::Setup() (in /usr/local/bin/node)
+==119==    by 0x8AB7F5: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119== 
+==119== 176 bytes in 1 blocks are possibly lost in loss record 32 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x923331: node::PerIsolatePlatformData::CallDelayedOnForegroundThread(std::unique_ptr<v8::Task, std::default_delete<v8::Task> >, double) (in /usr/local/bin/node)
+==119==    by 0x923514: node::NodePlatform::CallDelayedOnForegroundThread(v8::Isolate*, v8::Task*, double) (in /usr/local/bin/node)
+==119==    by 0xDE2B93: v8::internal::MemoryReducer::NotifyMarkCompact(v8::internal::MemoryReducer::Event const&) (in /usr/local/bin/node)
+==119==    by 0xE0B07F: v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [clone .constprop.934] (in /usr/local/bin/node)
+==119==    by 0xE0BD15: v8::internal::Heap::FinalizeIncrementalMarkingIfComplete(v8::internal::GarbageCollectionReason) (in /usr/local/bin/node)
+==119==    by 0xE0D71C: v8::internal::IncrementalMarkingJob::Task::RunInternal() (in /usr/local/bin/node)
+==119==    by 0xB3F705: v8::internal::CancelableTask::Run() (in /usr/local/bin/node)
+==119==    by 0x921CAA: node::PerIsolatePlatformData::FlushForegroundTasksInternal() (in /usr/local/bin/node)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 224 bytes in 1 blocks are definitely lost in loss record 33 of 44
+==119==    at 0x4C2A8E8: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==119==    by 0x8F9329: node::GetStatValues(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 232 bytes in 1 blocks are possibly lost in loss record 34 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x94827E: node::(anonymous namespace)::SignalWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 592 bytes in 1 blocks are possibly lost in loss record 35 of 44
+==119==    at 0x4C2B9B5: calloc (vg_replace_malloc.c:711)
+==119==    by 0x40128C4: _dl_allocate_tls (in /usr/lib64/ld-2.17.so)
+==119==    by 0x5A697FB: pthread_create@@GLIBC_2.2.5 (in /usr/lib64/libpthread-2.17.so)
+==119==    by 0x96DCB1: node::inspector::Agent::Start(node::NodePlatform*, char const*, node::DebugOptions const&) (in /usr/local/bin/node)
+==119==    by 0x8D5366: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 992 bytes in 2 blocks are possibly lost in loss record 36 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x959E74: node::TTYWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 1,198 bytes in 1 blocks are still reachable in loss record 37 of 44
+==119==    at 0x4C2B9B5: calloc (vg_replace_malloc.c:711)
+==119==    by 0x400B36E: _dl_new_object (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40062F3: _dl_map_object_from_fd (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40087B7: _dl_map_object (in /usr/lib64/ld-2.17.so)
+==119==    by 0x40143E3: dl_open_worker (in /usr/lib64/ld-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4013CCA: _dl_open (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E36FBA: dlopen_doit (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x400F913: _dl_catch_error (in /usr/lib64/ld-2.17.so)
+==119==    by 0x4E375BC: _dlerror_run (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x4E37050: dlopen@@GLIBC_2.2.5 (in /usr/lib64/libdl-2.17.so)
+==119==    by 0x9B7E06: uv_dlopen (dl.c:36)
+==119==    by 0x8CD6E4: node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119== 
+==119== 3,048 bytes in 1 blocks are still reachable in loss record 38 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x1472A44: uhash_open_60 (in /usr/local/bin/node)
+==119==    by 0x14B98A5: entryOpenDirect(char const*, char const*, UErrorCode*) (in /usr/local/bin/node)
+==119==    by 0x14BEAE5: ures_openDirect_60 (in /usr/local/bin/node)
+==119==    by 0x1302031: ulocdata_getCLDRVersion_60 (in /usr/local/bin/node)
+==119==    by 0x9426D9: node::i18n::(anonymous namespace)::GetVersion(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0BBEB: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<false>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C83E: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 8,192 bytes in 1 blocks are still reachable in loss record 39 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x10EC63F: v8::internal::AccountingAllocator::GetSegment(unsigned long) (in /usr/local/bin/node)
+==119==    by 0x10ED096: v8::internal::Zone::New(unsigned long) (in /usr/local/bin/node)
+==119==    by 0xCF5380: v8::internal::compiler::TypeCache::TypeCache() (in /usr/local/bin/node)
+==119==    by 0x145A3C6: v8::base::CallOnceImpl(long*, void (*)(void*), void*) (in /usr/local/bin/node)
+==119==    by 0xCF5E94: v8::internal::compiler::TypeCache::Get() (in /usr/local/bin/node)
+==119==    by 0xC2002F: v8::internal::compiler::JSNativeContextSpecialization::JSNativeContextSpecialization(v8::internal::compiler::AdvancedReducer::Editor*, v8::internal::compiler::JSGraph*, v8::base::Flags<v8::internal::compiler::JSNativeContextSpecialization::Flag, int>, v8::internal::Handle<v8::internal::Context>, v8::internal::CompilationDependencies*, v8::internal::Zone*) (in /usr/local/bin/node)
+==119==    by 0xC9008D: v8::internal::compiler::InliningPhase::Run(v8::internal::compiler::PipelineData*, v8::internal::Zone*) (in /usr/local/bin/node)
+==119==    by 0xC95A0F: v8::internal::compiler::PipelineImpl::CreateGraph() (in /usr/local/bin/node)
+==119==    by 0xC95FF6: v8::internal::compiler::PipelineCompilationJob::PrepareJobImpl() (in /usr/local/bin/node)
+==119==    by 0xD28A59: v8::internal::CompilationJob::PrepareJob() (in /usr/local/bin/node)
+==119==    by 0xD29468: v8::internal::(anonymous namespace)::GetOptimizedCode(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::ConcurrencyMode, v8::internal::BailoutId, v8::internal::JavaScriptFrame*) (in /usr/local/bin/node)
+==119==    by 0xD29FFF: v8::internal::Compiler::GetOptimizedCodeForOSR(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::BailoutId, v8::internal::JavaScriptFrame*) (in /usr/local/bin/node)
+==119==    by 0x1011EFF: v8::internal::Runtime_CompileForOnStackReplacement(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43DACE: ???
+==119==    by 0x3368B485754: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119==    by 0x8D2029: node::LoadEnvironment(node::Environment*) (in /usr/local/bin/node)
+==119==    by 0x8D5433: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 17,824 bytes in 1,114 blocks are still reachable in loss record 40 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x105F4E9: v8::internal::(anonymous namespace)::InitializeIntrinsicFunctionNames() (in /usr/local/bin/node)
+==119==    by 0x145A3C6: v8::base::CallOnceImpl(long*, void (*)(void*), void*) (in /usr/local/bin/node)
+==119==    by 0x105F891: v8::internal::Runtime::FunctionForName(unsigned char const*, int) (in /usr/local/bin/node)
+==119==    by 0xF69277: v8::internal::ParserBase<v8::internal::Parser>::ParseV8Intrinsic(bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D3DC: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D491: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A053: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6CF38: v8::internal::ParserBase<v8::internal::Parser>::ParseBlock(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ADC7: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF79E63: v8::internal::ParserBase<v8::internal::Parser>::ParseScopedStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A12A: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6B107: v8::internal::ParserBase<v8::internal::Parser>::ParseStatementList(v8::internal::ZoneList<v8::internal::Statement*>*, int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6C126: v8::internal::ParserBase<v8::internal::Parser>::ParseFunctionBody(v8::internal::ZoneList<v8::internal::Statement*>*, v8::internal::AstRawString const*, int, v8::internal::ParserFormalParameters const&, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6E779: v8::internal::Parser::ParseFunction(v8::internal::AstRawString const*, int, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, v8::internal::DeclarationScope*, int*, int*, bool*, int*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6F11D: v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::LanguageMode, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72107: v8::internal::Parser::DoParseFunction(v8::internal::ParseInfo*, v8::internal::AstRawString const*) (in /usr/local/bin/node)
+==119==    by 0xF72779: v8::internal::Parser::ParseFunction(v8::internal::Isolate*, v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>) (in /usr/local/bin/node)
+==119==    by 0xF7FF25: v8::internal::parsing::ParseFunction(v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0xD2C9FC: v8::internal::Compiler::Compile(v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Compiler::ClearExceptionFlag) (in /usr/local/bin/node)
+==119== 
+==119== 49,152 bytes in 1 blocks are still reachable in loss record 41 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x105F2B5: v8::base::TemplateHashMapImpl<void*, void*, v8::base::HashEqualityThenKeyMatcher<void*, bool (*)(void*, void*)>, v8::base::DefaultAllocationPolicy>::Resize(v8::base::DefaultAllocationPolicy) [clone .isra.31] (in /usr/local/bin/node)
+==119==    by 0x105F657: v8::internal::(anonymous namespace)::InitializeIntrinsicFunctionNames() (in /usr/local/bin/node)
+==119==    by 0x145A3C6: v8::base::CallOnceImpl(long*, void (*)(void*), void*) (in /usr/local/bin/node)
+==119==    by 0x105F891: v8::internal::Runtime::FunctionForName(unsigned char const*, int) (in /usr/local/bin/node)
+==119==    by 0xF69277: v8::internal::ParserBase<v8::internal::Parser>::ParseV8Intrinsic(bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D3DC: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6D491: v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF74BDD: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF75001: v8::internal::ParserBase<v8::internal::Parser>::ParseMemberWithNewPrefixesExpression(bool*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF755FF: v8::internal::ParserBase<v8::internal::Parser>::ParseLeftHandSideExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF76536: v8::internal::ParserBase<v8::internal::Parser>::ParsePostfixExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF767DE: v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*) (in /usr/local/bin/node)
+==119==    by 0xF64A40: v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65295: v8::internal::ParserBase<v8::internal::Parser>::ParseConditionalExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF65B78: v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72B06: v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionCoverGrammar(bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A053: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6CF38: v8::internal::ParserBase<v8::internal::Parser>::ParseBlock(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ADC7: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF79E63: v8::internal::ParserBase<v8::internal::Parser>::ParseScopedStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF7A12A: v8::internal::ParserBase<v8::internal::Parser>::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6ABDF: v8::internal::ParserBase<v8::internal::Parser>::ParseStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6B107: v8::internal::ParserBase<v8::internal::Parser>::ParseStatementList(v8::internal::ZoneList<v8::internal::Statement*>*, int, bool, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6C126: v8::internal::ParserBase<v8::internal::Parser>::ParseFunctionBody(v8::internal::ZoneList<v8::internal::Statement*>*, v8::internal::AstRawString const*, int, v8::internal::ParserFormalParameters const&, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6E779: v8::internal::Parser::ParseFunction(v8::internal::AstRawString const*, int, v8::internal::FunctionKind, v8::internal::FunctionLiteral::FunctionType, v8::internal::DeclarationScope*, int*, int*, bool*, int*, bool*) (in /usr/local/bin/node)
+==119==    by 0xF6F11D: v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::LanguageMode, bool*) (in /usr/local/bin/node)
+==119==    by 0xF72107: v8::internal::Parser::DoParseFunction(v8::internal::ParseInfo*, v8::internal::AstRawString const*) (in /usr/local/bin/node)
+==119==    by 0xF72779: v8::internal::Parser::ParseFunction(v8::internal::Isolate*, v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>) (in /usr/local/bin/node)
+==119==    by 0xF7FF25: v8::internal::parsing::ParseFunction(v8::internal::ParseInfo*, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119== 
+==119== 74,240 bytes in 1 blocks are possibly lost in loss record 42 of 44
+==119==    at 0x4C29C23: malloc (vg_replace_malloc.c:299)
+==119==    by 0x142E73B: ares_init_options.part.3 (ares_init.c:135)
+==119==    by 0x8AA0F0: node::cares_wrap::(anonymous namespace)::ChannelWrap::Setup() (in /usr/local/bin/node)
+==119==    by 0x8AB7F5: node::cares_wrap::(anonymous namespace)::ChannelWrap::New(v8::FunctionCallbackInfo<v8::Value> const&) (in /usr/local/bin/node)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C884: v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*) (in /usr/local/bin/node)
+==119==    by 0x3368B3842FC: ???
+==119==    by 0x3368B43A63C: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B387B69: ???
+==119==    by 0x3368B47977F: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B44EFB7: ???
+==119==    by 0x3368B47073B: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B38535E: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B43D1D5: ???
+==119==    by 0x3368B384238: ???
+==119==    by 0x3368B384100: ???
+==119==    by 0xDA4429: v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA771C2: v8::Function::Call(v8::Local<v8::Context>, v8::Local<v8::Value>, int, v8::Local<v8::Value>*) (in /usr/local/bin/node)
+==119== 
+==119== 79,996 bytes in 19,999 blocks are definitely lost in loss record 43 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x985C3EE: NuoJs::ConnectWorker::HandleOKCallback() (NuoJsDriver.cpp:86)
+==119==    by 0x985BAD3: Nan::AsyncWorker::WorkComplete() (nan.h:1845)
+==119==    by 0x985BD3A: Nan::AsyncExecuteComplete(uv_work_s*) (nan.h:2199)
+==119==    by 0x9B3594: uv__work_done (threadpool.c:251)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== 479,976 bytes in 19,999 blocks are definitely lost in loss record 44 of 44
+==119==    at 0x4C2A243: operator new(unsigned long) (vg_replace_malloc.c:334)
+==119==    by 0x985E21C: NuoJs::Connection::newInstance(Nan::FunctionCallbackInfo<v8::Value> const&) (NuoJsConnection.cpp:49)
+==119==    by 0x985A1DA: Nan::imp::FunctionCallbackWrapper(v8::FunctionCallbackInfo<v8::Value> const&) (nan_callbacks_12_inl.h:176)
+==119==    by 0xA94A42: v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&)) (in /usr/local/bin/node)
+==119==    by 0xB0C10E: v8::internal::MaybeHandle<v8::internal::Object> v8::internal::(anonymous namespace)::HandleApiCallHelper<true>(v8::internal::Isolate*, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::BuiltinArguments) (in /usr/local/bin/node)
+==119==    by 0xB0C5E6: v8::internal::Builtins::InvokeApiFunction(v8::internal::Isolate*, bool, v8::internal::Handle<v8::internal::HeapObject>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*, v8::internal::Handle<v8::internal::HeapObject>) (in /usr/local/bin/node)
+==119==    by 0xDA4F15: v8::internal::Execution::New(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*) (in /usr/local/bin/node)
+==119==    by 0xA76F39: v8::Function::NewInstance(v8::Local<v8::Context>, int, v8::Local<v8::Value>*) const (in /usr/local/bin/node)
+==119==    by 0x985E571: v8::Function::NewInstance(v8::Local<v8::Context>) const (v8.h:3904)
+==119==    by 0x985E5E8: Nan::NewInstance(v8::Local<v8::Function>) (nan_maybe_43_inl.h:56)
+==119==    by 0x985E311: NuoJs::Connection::createFrom(unsigned long) (NuoJsConnection.cpp:66)
+==119==    by 0x985C40F: NuoJs::ConnectWorker::HandleOKCallback() (NuoJsDriver.cpp:89)
+==119==    by 0x985BAD3: Nan::AsyncWorker::WorkComplete() (nan.h:1845)
+==119==    by 0x985BD3A: Nan::AsyncExecuteComplete(uv_work_s*) (nan.h:2199)
+==119==    by 0x9B3594: uv__work_done (threadpool.c:251)
+==119==    by 0x9B580A: uv__async_io (async.c:118)
+==119==    by 0x9C6E47: uv__io_poll (linux-core.c:400)
+==119==    by 0x9B6195: uv_run (core.c:368)
+==119==    by 0x8D55A4: node::Start(uv_loop_s*, int, char const* const*, int, char const* const*) (in /usr/local/bin/node)
+==119==    by 0x8D48FF: node::Start(int, char**) (in /usr/local/bin/node)
+==119==    by 0x5C9F444: (below main) (in /usr/lib64/libc-2.17.so)
+==119== 
+==119== LEAK SUMMARY:
+==119==    definitely lost: 560,380 bytes in 40,004 blocks
+==119==    indirectly lost: 0 bytes in 0 blocks
+==119==      possibly lost: 76,779 bytes in 12 blocks
+==119==    still reachable: 80,546 bytes in 1,138 blocks
+==119==                       of which reachable via heuristic:
+==119==                         multipleinheritance: 56 bytes in 1 blocks
+==119==         suppressed: 0 bytes in 0 blocks
+==119== 
+==119== ERROR SUMMARY: 19 errors from 19 contexts (suppressed: 0 from 0)
+==119== ERROR SUMMARY: 19 errors from 19 contexts (suppressed: 0 from 0)
