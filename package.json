@@ -1,0 +1,40 @@
+{
+  "name": "node-nuodb",
+  "author": "NuoDB, Inc.",
+  "description": "A Node.js module for NuoDB Database access.",
+  "license": "Apache-2.0",
+  "version": "3.0.0",
+  "main": "index.js",
+  "keywords": [
+    "node.js",
+    "module",
+    "nuodb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rbuck/node-nuodb.git"
+  },
+  "bugs": {
+    "url": "git://github.com/rbuck/node-nuodb/issues"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "private": true,
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "nan": "^2.11.1",
+    "node-gyp": "^3.8.0",
+    "segfault-handler": "^1.0.1"
+  },
+  "devDependencies": {
+    "async": "^2.6.1",
+    "mocha": "^5.2.0",
+    "okay": "^0.3.0",
+    "should": "^13.2.3"
+  },
+  "scripts": {
+    "pretest": "ls -al",
+    "test": "node-gyp rebuild -d && G_SLICE=always-malloc G_DEBUG=gc-friendly valgrind -v --tool=memcheck --leak-check=full --show-reachable=yes --num-callers=40 --log-file=/valgrind/valgrind.log $(which node) test/test.js"
+  }
+}
